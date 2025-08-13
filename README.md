@@ -26,7 +26,7 @@ in [GitHub secrets](https://docs.github.com/en/enterprise-cloud@latest/actions/s
 E.g.,
 ```yaml
 steps:
-  - uses: neonidian/teams-notify-build-status@v3
+  - uses: neonidian/teams-notify-build-status@v4
     with:
       webhookUrl: ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL }}   # Secret name is "TEAMS_INCOMING_WEBHOOK_URL"
       message: Workflow run passed !!
@@ -43,7 +43,7 @@ steps:
 E.g.,
 ```yaml
 steps:
-  - uses: neonidian/teams-notify-build-status@v3
+  - uses: neonidian/teams-notify-build-status@v4
     with:
       webhookUrl: |                                         # Send to multiple channels in MS Teams
         ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL_1 }}
@@ -87,7 +87,7 @@ See the actions tab in your GitHub repository for runs of this action! :rocket:
 
 ```yaml
 steps:
-  - uses: neonidian/teams-notify-build-status@v3
+  - uses: neonidian/teams-notify-build-status@v4
     if: ${{ !success() }}        # For other statuses, see https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
     with:
       webhookUrl: ${{ secrets.TEAMS_INCOMING_WEBHOOK_URL }}
@@ -103,7 +103,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: neonidian/teams-notify-build-status@v3
+  - uses: neonidian/teams-notify-build-status@v4
     needs: [ unitTests, systemTests ]          # IDs of jobs
     if: ${{ job.status == 'failure' }}       # Same as 'failure()'
     with:
@@ -123,7 +123,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: neonidian/teams-notify-build-status@v3
+  - uses: neonidian/teams-notify-build-status@v4
     if: always()
     with:
       webhookUrl: |
